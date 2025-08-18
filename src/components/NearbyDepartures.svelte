@@ -157,6 +157,8 @@
 
 	let show_filter_menu: boolean = false;
 
+        let gps_stall = false;
+
 	onMount(() => {
 		if (typeof window != 'undefined') {
 			current_time = Date.now();
@@ -218,9 +220,8 @@
 
                 const gpsTimeout = setTimeout(() => {
                         if (!first_attempt_sent && current_nearby_pick_state === 0) {
-                                console.log("No GPS after 10s. Switching to pin drop.");
-                                nearby_pick_state_store.set(1);
-                                pin_drop_press();
+                                console.log("No GPS after 10s. Please check device settings or switch to pin drop mode.");
+                                gps_stall = true;
                         }
 	        }, 10_000);
 
@@ -462,7 +463,9 @@
 	</div>
 
 	{#if !first_attempt_sent && current_nearby_pick_state == 0}
-		<p class="italic px-3 pb-2">{$_("waitingforgps")}...</p>
+		<p class="italic px-3 pb-2">
+                {gps_stall ? $_("gpsstall") : $_("waitingforgps")}...
+                </p>
 		<p class="italic px-3 pt-1 text-xs">{$_("gpsdisclaimer")}</p>
 	{/if}
 
