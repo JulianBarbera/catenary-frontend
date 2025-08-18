@@ -223,7 +223,7 @@
                                 console.log("No GPS after 10s. Please check device settings or switch to pin drop mode.");
                                 gps_stall = true;
                         }
-	        }, 10_000);
+	        }, 1_000);
 
 		return () => {
 			clearInterval(interval);
@@ -464,7 +464,11 @@
 
 	{#if !first_attempt_sent && current_nearby_pick_state == 0}
 		<p class="italic px-3 pb-2">
-                {gps_stall ? $_("gpsstall") : $_("waitingforgps")}...
+                {gps_stall 
+                        ? ($_("gpsstall")[($_("gpsstall").length === 1)
+                                ? 0 
+                                : Math.floor(Math.random()*$_("gpsstall").length)])
+                        : $_("waitingforgps")}...
                 </p>
 		<p class="italic px-3 pt-1 text-xs">{$_("gpsdisclaimer")}</p>
 	{/if}
