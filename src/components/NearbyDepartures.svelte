@@ -216,8 +216,17 @@
 			}
 		}, 300);
 
+                const gpsTimeout = setTimeout(() => {
+                        if (!first_attempt_sent && current_nearby_pick_state === 0) {
+                                console.log("No GPS after 10s. Switching to pin drop.");
+                                nearby_pick_state_store.set(1);
+                                pin_drop_press();
+                        }
+	        }, 10_000);
+
 		return () => {
 			clearInterval(interval);
+                        clearTimeout(gpsTimeout);
 
 			if (timeout_first_attempt != null) {
 				clearInterval(timeout_first_attempt);
