@@ -468,7 +468,7 @@
                         ? ($_("gpsstall")[($_("gpsstall").length === 1)
                                 ? 0 
                                 : Math.floor(Math.random()*$_("gpsstall").length)])
-                        : $_("waitingforgps")}...
+                        : $_("waitingforgps") + "..."}
                 </p>
 		<p class="italic px-3 pt-1 text-xs">{$_("gpsdisclaimer")}</p>
 	{/if}
