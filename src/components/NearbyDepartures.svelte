@@ -223,7 +223,7 @@
                                 console.log("No GPS after 10s. Please check device settings or switch to pin drop mode.");
                                 gps_stall = true;
                         }
-	        }, 1_000);
+	        }, 10_000);
 
 		return () => {
 			clearInterval(interval);

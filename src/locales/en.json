@@ -134,7 +134,7 @@
 	"occupancy_percentage": "Occupancy percentage",
 	"noormdata": "Hide Open Railway Map data",
 	"waitingforgps": "waiting for GPS",
-        "gpsstall": ["gps is fuck", "ur device is fuck"],
+        "gpsstall": ["We can't seem to find you...", "Try turning it off and on again", "Make sure GPS satellites are still in orbit", "Please stop being nowhere",                     "Kyler broke GPS...", "Please leave a tip!", "You haven't seem to have purchased the GPS DLC"],
 	"gpsdisclaimer": "If the wait is too long, check if this site has browser permissions to access your location, and verify your GPS signal is strong.",
 	"last_stop": "last stop",
 	"search_here": "Search here",
